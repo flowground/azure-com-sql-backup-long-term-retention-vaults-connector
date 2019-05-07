@@ -1,0 +1,83 @@
+{
+    "type": "object",
+    "properties": {
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "resourceGroupName": {
+            "required": true,
+            "type": "string"
+        },
+        "serverName": {
+            "required": true,
+            "type": "string"
+        },
+        "backupLongTermRetentionVaultName": {
+            "required": true,
+            "type": "string",
+            "enum": [
+                "RegisteredVault"
+            ]
+        },
+        "requestBody": {
+            "allOf": [
+                {
+                    "allOf": [
+                        {
+                            "description": "ARM resource.",
+                            "properties": {
+                                "id": {
+                                    "description": "Resource ID.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "description": "Resource name.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                },
+                                "type": {
+                                    "description": "Resource type.",
+                                    "readOnly": true,
+                                    "type": "string"
+                                }
+                            },
+                            "type": "object",
+                            "x-ms-azure-resource": true
+                        }
+                    ],
+                    "description": "ARM proxy resource.",
+                    "properties": {},
+                    "type": "object"
+                }
+            ],
+            "description": "A backup long term retention vault",
+            "properties": {
+                "location": {
+                    "description": "The geo-location where the resource lives",
+                    "readOnly": true,
+                    "type": "string"
+                },
+                "properties": {
+                    "description": "The properties of the backup long term retention vault",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "recoveryServicesVaultResourceId": {
+                            "description": "The azure recovery services vault resource id",
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "recoveryServicesVaultResourceId"
+                    ]
+                }
+            },
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
